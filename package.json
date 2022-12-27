@@ -7,7 +7,8 @@
     "dev": "nodemon src/index.ts",
     "build": "tsc",
     "start": "npm run build && node dist/index.js",
-    "prettier": "prettier --watch src/**/*.ts"
+    "prettier": "prettier --watch src/**/*.ts",
+    "test": "npm run build && jasmine"
   },
   "repository": {
     "type": "git",
@@ -21,12 +22,21 @@
   },
   "homepage": "https://github.com/KShawki/StoreFront#readme",
   "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/jasmine": "^4.3.1",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
     "eslint": "^8.30.0",
+    "jasmine": "^4.5.0",
+    "jasmine-spec-reporter": "^7.0.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.1",
+    "supertest": "^6.3.3",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
