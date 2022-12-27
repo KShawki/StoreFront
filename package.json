@@ -1,0 +1,28 @@
+{
+  "name": "storefront",
+  "version": "1.0.0",
+  "description": "Advanced Full-Stack Nanodegree - Udacity",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "tsc", 
+    "start": "npm run build && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KShawki/StoreFront.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KShawki/StoreFront/issues"
+  },
+  "homepage": "https://github.com/KShawki/StoreFront#readme",
+  "devDependencies": {
+    "typescript": "^4.9.4",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {}
+}
