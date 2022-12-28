@@ -29,17 +29,17 @@ app.post("/", (req, res): void => {
   });
 });
 
-db.connect().then((client) => {
-  return client
-    .query("select now()")
-    .then((res) => {
-      client.release();
-      console.log(res.rows);
-    })
-    .catch((error) => {
-      client.release();
-      console.log(error.stack);
-    });
-});
+// db.connect().then((client) => {
+//   return client
+//     .query("select now()")
+//     .then((res) => {
+//       client.release();
+//       console.log(res.rows);
+//     })
+//     .catch((error) => {
+//       client.release();
+//       console.log(error.stack);
+//     });
+// });
 
 export default app;
