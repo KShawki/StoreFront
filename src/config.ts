@@ -9,7 +9,7 @@ const {
   POSTGRES_DB_TEST,
   POSTGRES_USER,
   POSTGRES_PASSWORD,
-  NODE_ENV
+  NODE_ENV,
 } = process.env;
 
 export default {

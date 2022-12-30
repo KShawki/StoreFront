@@ -2,11 +2,12 @@ import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import config from "./config";
+import routes from "./routes";
 import db from "./database";
-// import RateLimit from "express-rate-limit";
+import RateLimit from "express-rate-limit";
 
 const app = express();
-const PORT = config.port || 3000;
+const PORT = config.port || 3001;
 
 // Middleware request logger, secuirty, rate limitting
 app.use(morgan("common"), helmet(), express.json());
@@ -17,29 +18,28 @@ app.listen(PORT, (): void =>
 );
 
 app.get("/", (req, res): void => {
-  res.json({
-    message: `Hello, Khaled`,
-  });
+  res
+    .json({
+      Status: "End Points Works ✅",
+    })
+    .status(200);
 });
 
-app.post("/", (req, res): void => {
-  res.json({
-    message: `Hello, Khaled`,
-    data: req.body,
+app.use("/api", routes);
+
+// TEST Database Connection - Works ✅
+/*
+  db.connect().then((client) => {
+    return client
+      .query("select now()")
+      .then((res) => {
+        client.release();
+        console.log(res.rows);
+      })
+      .catch((error) => {
+        client.release();
+        console.log(error.stack);
+      });
   });
-});
-
-// db.connect().then((client) => {
-//   return client
-//     .query("select now()")
-//     .then((res) => {
-//       client.release();
-//       console.log(res.rows);
-//     })
-//     .catch((error) => {
-//       client.release();
-//       console.log(error.stack);
-//     });
-// });
-
+*/
 export default app;
