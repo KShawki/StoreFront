@@ -1,5 +1,7 @@
 import User from "../types/user.type";
 import db from "../database";
+import config from "../config";
+import bcrypt from "bcrypt";
 
 // USER EndPoints
 // --- Index [token required] : `'/users' [GET]`
@@ -8,6 +10,12 @@ import db from "../database";
 // --- Authenticate (args: username, password) [token required] : `'/auth' [GET]`
 // --- AddProductToOrder (args: orderId, productId, quantity) [token required]: `'/users/:id/add-product-to-order' [POST]`
 // --- RemoveProductFromOrder (args: orderId, productId) [token required] `'/users/:id/remove-product-from-order' [DELETE]`
+
+const hashPass = (password: string) => {
+  const salt = parseInt(config.salt as string, 10);
+  const pepper = config.pepper;
+  return bcrypt.hashSync(`${password}${config.pepper}`, salt);
+};
 
 class UserModel {
   // [POST]: create new user
@@ -22,7 +30,7 @@ class UserModel {
         user.username,
         user.firstname,
         user.lastname,
-        user.password,
+        hashPass(user.password as string),
       ]);
       const { id, username, first_name, last_name, password } = result.rows[0];
       connection.release();
@@ -51,7 +59,7 @@ class UserModel {
     }
   }
 
-  // get specific user
+  // [GET]: get specific user
   async show(id: string): Promise<User> {
     try {
       // connect with database
@@ -66,6 +74,44 @@ class UserModel {
       return result.rows[0];
     } catch (error) {
       // handle the error if happen
+      throw new Error(`Error: ${error}`);
+    }
+  }
+
+  async auth(email: string, password: string): Promise<User | undefined> {
+    try {
+      // connect with DB
+      const connection = await db.connect();
+
+      // query to retrive all data
+      const sql = `SELECT password FROM users WHERE email=($1)`;
+
+      // execute the query
+      const result = await connection.query(sql, [email]);
+
+      // check the results if not null
+      if (result.rows.length) {
+        // check if the pass is valid or not by compare between two password
+        // (user and hashed password) using compare sync built in function
+        const { password: hashPass } = result.rows[0];
+        const isPasswordValid = bcrypt.compareSync(
+          `${password}${config.pepper}`,
+          hashPass
+        );
+
+        // return the password and email if exsist
+        if (isPasswordValid) {
+          const userInfo = await connection.query(
+            `SELECT id, email, username, first_name, last_name FROM users where email=($1)`,
+            [email]
+          );
+          return userInfo.rows[0];
+        }
+
+        // close connections
+        connection.release();
+      }
+    } catch (error) {
       throw new Error(`Error: ${error}`);
     }
   }

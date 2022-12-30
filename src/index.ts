@@ -18,12 +18,10 @@ app.listen(PORT, (): void =>
 );
 
 app.get("/", (req, res): void => {
-  res
-    .json({
-      Status: "End Points Works ✅",
-    })
-    .status(200);
-});
+  res.status(200).json({
+    Status: "End Points Works ✅",
+  });
+}); 
 
 app.use("/api", routes);
 
