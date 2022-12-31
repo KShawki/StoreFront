@@ -20,13 +20,8 @@ CREATE TABLE products (
 CREATE TABLE orders (
   id            SERIAL PRIMARY KEY,
   user_id       INTEGER NOT NULL REFERENCES users(id),
-  status        BOOLEAN NOT NULL
-);
-
-CREATE TABLE order_details (
-  order_id      INTEGER NOT NULL REFERENCES orders(id),
   product_id    INTEGER NOT NULL REFERENCES products(id),
-  quantity      INTEGER NOT NULL
+  status        BOOLEAN NOT NULL
 );
 
 

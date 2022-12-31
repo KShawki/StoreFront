@@ -12,10 +12,14 @@ class OrderModel {
       const connection = await db.connect();
       // write a sql query to insert order data;
       const sql =
-        "INSERT INTO orders (user_id, status) VALUES($1, $2) RETURNING *";
+        "INSERT INTO orders (user_id, product_id, status) VALUES($1, $2, $3) RETURNING *";
 
       // execute previous sql statements
-      const result = await connection.query(sql, [order.user_id, order.status]);
+      const result = await connection.query(sql, [
+        order.user_id,
+        order.product_id,
+        order.status,
+      ]);
 
       // close connection
       connection.release();
@@ -54,7 +58,7 @@ class OrderModel {
 
       // write and execute the query
       const result = await connection.query(
-        "SELECT * FROM orders where id=($1)",
+        "SELECT * FROM orders where user_id=($1)",
         [id]
       );
 
@@ -63,6 +67,48 @@ class OrderModel {
 
       // retrun the result;
       return result.rows[0];
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async completed(id: number): Promise<Order[]> {
+    try {
+      // connect with db
+      const connection = await db.connect();
+
+      // write and execute the query
+      const result = await connection.query(
+        "SELECT * FROM orders WHERE user_id =($1) AND status = 't';",
+        [id]
+      );
+
+      // close the connection;
+      connection.release();
+
+      // retrun the result;
+      return result.rows;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async active(id: number): Promise<Order[]> {
+    try {
+      // connect with db
+      const connection = await db.connect();
+
+      // write and execute the query
+      const result = await connection.query(
+        "SELECT * FROM orders WHERE user_id =($1) AND status = 'f';",
+        [id]
+      );
+
+      // close the connection;
+      connection.release();
+
+      // retrun the result;
+      return result.rows;
     } catch (error) {
       throw error;
     }
