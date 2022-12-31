@@ -8,17 +8,17 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Products
 
-- Index
-- Show
-- Create [token required]
+- Index ✅
+- Show ✅
+- Create [token required] ✅
 - [OPTIONAL] Top 5 most popular products
 - [OPTIONAL] Products by category (args: product category)
 
 #### Users
 
-- Index [token required]
-- Show [token required]
-- Create N[token required]
+- ✅ Index [token required]
+- ✅ Show [token required]
+- ✅ Create [token required]
 
 #### Orders
 
@@ -29,22 +29,22 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Product
 
-- id
-- name
-- price
-- [OPTIONAL] category
+- id ✅
+- name ✅
+- price ✅
+- [OPTIONAL] category ✅
 
 #### User
 
-- id
-- firstName
-- lastName
-- password
+- id ✅
+- firstName ✅
+- lastName ✅
+- password ✅
 
 #### Orders
 
-- id
-- id of each product in the order
-- quantity of each product in the order
-- user_id
-- status of order (active or complete)
+- id ✅
+- id of each product in the order ✅
+- quantity of each product in the order ✅
+- user_id ✅
+- status of order (active or complete) ✅

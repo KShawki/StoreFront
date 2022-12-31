@@ -1,14 +1,11 @@
-<h3 align="center">Build a Storefront Backend</h3>
+<h2 align="center">Build a Storefront Backend</h2>
 <p align="center">Advanced Full-Stack Nanodegree - Udacity</p>
-
-<br/>
 
 ## About The Project
 
 Build a JavaScript API based on a requirements given by the stakeholders. You will architect the database, tables, and columns to fulfill the requirements. Create a RESTful API to be accessible to the frontend developer. You will also have written test, secured user information with encryption, and provide tokens for integration into the frontend.
 
 <hr />
-<br />
 
 ### USAGE
 
@@ -16,11 +13,11 @@ Build a JavaScript API based on a requirements given by the stakeholders. You wi
 $ git clone git@github.com:KShawki/StoreFront.git
 $ cd StoreFront;
 $ npm install
+$ npx db-migrate up
 $ npm run dev
 ```
 
 <hr />
-<br />
 
 ### Scripts:
 
@@ -37,7 +34,6 @@ $ npm run dev
 ```
 
 <hr />
-<br />
 
 ### EndPoints
 
