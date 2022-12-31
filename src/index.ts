@@ -3,14 +3,16 @@ import morgan from "morgan";
 import helmet from "helmet";
 import config from "./config";
 import routes from "./routes";
-import db from "./database";
-import RateLimit from "express-rate-limit";
+import path from "path";
+// import db from "./database";
+// import RateLimit from "express-rate-limit";
 
 const app = express();
 const PORT = config.port || 3001;
 
-// Middleware request logger, secuirty, rate limitting
+// Middleware request logger, secuirty
 app.use(morgan("common"), helmet(), express.json());
+app.use(express.static(path.resolve(__dirname, "public")));
 
 // Create an instant from server
 app.listen(PORT, (): void =>
@@ -18,10 +20,8 @@ app.listen(PORT, (): void =>
 );
 
 app.get("/", (req, res): void => {
-  res.status(200).json({
-    Status: "End Points Works ✅",
-  });
-}); 
+  res.status(200).sendFile(path.join(__dirname, "./public/index.html"));
+});
 
 app.use("/api", routes);
 

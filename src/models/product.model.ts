@@ -55,7 +55,7 @@ class ProductModel {
     }
   }
 
-  // [POST]: Create New Product. 
+  // [POST]: Create New Product.
   async create(product: Product): Promise<Product> {
     try {
       // connect with db;

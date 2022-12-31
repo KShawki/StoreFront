@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Documentation</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <script src="tw.js"></script>
+    <style>
+      .containerr {
+        width: 70%;
+        margin: 0 auto;
+      }
+
+      .api {
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      .code {
+        background-color: #272727c0;
+        color: #fff;
+        padding: 10px 10px;
+        margin-left: 10px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main containerr mx-auto">
+      <h1 class="text-3xl text-center mt-10 font-bold">
+        Build a Storefront Backend
+      </h1>
+      <p class="text-center m-2">
+        Advanced Full-Stack Web Development Nanodegree Program - EgFWD
+      </p>
+
+      <!-- About The Project -->
+      <div
+        class="px-4 py-3 leading-normal text-amber-700 bg-amber-100 rounded-lg mt-5"
+        role="alert"
+      >
+        <h1 class="font-bold text-xl">About The Project</h1>
+        <div class="mt-2 text-justify">
+          Build a JavaScript API based on a requirements given by the
+          stakeholders. You will architect the database, tables, and columns to
+          fulfill the requirements. Create a RESTful API to be accessible to the
+          frontend developer. You will also have written test, secured user
+          information with encryption, and provide tokens for integration into
+          the frontend.
+        </div>
+      </div>
+
+      <!-- API DOCUMENTATION -->
+      <div
+        class="px-4 py-3 leading-normal text-sky-700 bg-sky-200 rounded-lg mt-10"
+        role="alert"
+      >
+        <h1 class="font-bold text-xl p-2 mb-3">Users EndPoints:</h1>
+        <h4></h4>
+
+        <!-- <p><strong></strong></p> -->
+        <ul class="list-group">
+          <li class="list-group-item"><b>Endpoint: </b> /api/users/create</li>
+          <li class="list-group-item"><b>Method: </b> POST</li>
+        </ul>
+        <br />
+        <p><strong>Query Parameters:</strong></p>
+        <ul class="list-group">
+          <li class="list-group-item"><b>email: </b> string</li>
+          <li class="list-group-item"><b>username: </b> string</li>
+          <li class="list-group-item"><b>firstname: </b> string</li>
+          <li class="list-group-item"><b>lastname:</b> string</li>
+          <li class="list-group-item"><b>password:</b> string</li>
+        </ul>
+
+        <br />
+        <p><strong>Example requests:</strong></p>
+        <ul class="list-group">
+          <li class="list-group-item">
+              <pre>http://localhost:3000/api/users/create</pre>
+            </a>
+          </li>
+        </ul>
+        <br />
+
+        <hr class='mb-3'>
+
+
+        <ul class="list-group">
+          <li class="list-group-item"><b>Endpoint: </b> /api/users/index</li>
+          <li class="list-group-item"><b>Method: </b> GET</li>
+        </ul>
+        <br />
+        <p><strong>Example requests:</strong></p>
+        <ul class="list-group">
+          <li class="list-group-item">
+              <pre>http://localhost:3000/api/users/index</pre>
+            </a>
+          </li>
+        </ul>
+        <br>
+
+        <hr class='mb-3'>
+
+        <ul class="list-group">
+          <li class="list-group-item"><b>Endpoint: </b> /api/users/show/:id</li>
+          <li class="list-group-item"><b>Method: </b> GET</li>
+        </ul>
+        <br />
+        <p><strong>Example requests:</strong></p>
+        <ul class="list-group">
+          <li class="list-group-item">
+              <pre>http://localhost:3000/api/users/show/id</pre>
+            </a>
+          </li>
+        </ul>
+        <br>
+      </div>
+
+      <div
+        class="px-4 py-3 leading-normal text-rose-700 bg-rose-100 rounded-lg mt-5"
+        role="alert"
+      >
+      <h1 class="font-bold text-xl p-2 mb-3">Product EndPoints:</h1>
+      <h4></h4>
+
+      <!-- <p><strong>Users EndPoints:</strong></p> -->
+      <ul class="list-group">
+        <li class="list-group-item"><b>Endpoint: </b> /api/products/create</li>
+        <li class="list-group-item"><b>Method: </b> POST</li>
+      </ul>
+      <br />
+      <p><strong>Query Parameters:</strong></p>
+      <ul class="list-group">
+        <li class="list-group-item"><b>name: </b> string</li>
+        <li class="list-group-item"><b>price: </b> number</li>
+        <li class="list-group-item"><b>category: </b> string</li>
+      </ul>
+
+      <br />
+      <p><strong>Example requests:</strong></p>
+      <ul class="list-group">
+        <li class="list-group-item">
+            <pre>http://localhost:3000/api/products/create</pre>
+          </a>
+        </li>
+      </ul>
+      <br />
+
+      <hr class='mb-3'>
+
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Endpoint: </b> /api/users/index</li>
+        <li class="list-group-item"><b>Method: </b> GET</li>
+      </ul>
+      <br />
+      <p><strong>Example requests:</strong></p>
+      <ul class="list-group">
+        <li class="list-group-item">
+            <pre>http://localhost:3000/api/proudcts/index</pre>
+          </a>
+        </li>
+      </ul>
+      <br>
+
+      <hr class='mb-3'>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Endpoint: </b> /api/products/show/:id</li>
+        <li class="list-group-item"><b>Method: </b> GET</li>
+      </ul>
+      <br />
+      <p><strong>Example requests:</strong></p>
+      <ul class="list-group">
+        <li class="list-group-item">
+            <pre>http://localhost:3000/api/products/show/id</pre>
+          </a>
+        </li>
+      </ul>
+      <br>
+      </div>
+
+      <div
+        class="px-4 py-3 leading-normal text-slate-700 bg-slate-100 rounded-lg mt-5"
+        role="alert"
+      >
+        <div align="center">
+          The Project made with ❤️ by <b>Khalid Shawki</b> | GitHub:
+          <a href="https://github.com/KShawki" class="font-bold">KShawki</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
