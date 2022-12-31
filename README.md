@@ -37,12 +37,17 @@ $ npm run dev
 
 ### EndPoints
 
-| Syntax               | METHOD | LINK                                          |
-| -------------------- | ------ | --------------------------------------------- |
-| HOME                 | GET    | `http://localhost:3000/`                      |
-| CREATE USER          | POST   | `http://localhost:3000/api/users/create`      |
-| GET ALL USER         | GET    | `http://localhost:3000/api/users/index`       |
-| GET SPECIFIC USER    | GET    | `http://localhost:3000/api/users/show/:id`    |
-| CREATE PRODUCT       | POST   | `http://localhost:3000/api/proudcts/create`   |
-| GET ALL PRODUCT      | GET    | `http://localhost:3000/api/products/index`    |
-| GET SPECIFIC PRODUCT | GET    | `http://localhost:3000/api/products/show/:id` |
+| Syntax               | METHOD | LINK                                           |
+| -------------------- | ------ | ---------------------------------------------- |
+| HOME                 | GET    | `http://localhost:3000/`                       |
+| CREATE USER          | POST   | `http://localhost:3000/api/users/create`       |
+| GET ALL USER         | GET    | `http://localhost:3000/api/users/index`        |
+| GET SPECIFIC USER    | GET    | `http://localhost:3000/api/users/show/:id`     |
+| CREATE PRODUCT       | POST   | `http://localhost:3000/api/proudcts/create`    |
+| GET ALL PRODUCT      | GET    | `http://localhost:3000/api/products/index`     |
+| GET SPECIFIC PRODUCT | GET    | `http://localhost:3000/api/products/show/:id`  |
+| CREATE ORDER         | POST   | `http://localhost:3000/api/orders/create`      |
+| GET ALL ORDER        | GET    | `http://localhost:3000/api/orders/index`       |
+| GET SPECIFIC ORDER   | GET    | `http://localhost:3000/api/orders/show/1`      |
+| GET COMPLETED ORDER  | GET    | `http://localhost:3000/api/orders/completed/1` |
+| GET ACTIVE ORDER     | GET    | `http://localhost:3000/api/orders/ACTIVE/1`    |
