@@ -1,3 +1,9 @@
+// Product
+// - id
+// - name
+// - price
+// - [OPTIONAL] category
+
 type Product = {
   id?: number;
   name: string;
