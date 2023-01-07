@@ -9,6 +9,12 @@ Build a JavaScript API based on a requirements given by the stakeholders. You wi
 
 ### USAGE
 
+```
+  1. create database called store
+  2. create environment variables (".env") and add the information required
+  3. run the following commands:
+```
+
 ```shell
 $ git clone git@github.com:KShawki/StoreFront.git
 $ cd StoreFront;
@@ -16,6 +22,8 @@ $ npm install
 $ npx db-migrate up
 $ npm run dev
 ```
+<small><b>Note:</b> I'll add a postman collection to test api!</small>
+
 
 <hr />
 
