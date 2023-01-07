@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "npm run build && node dist/index.js",
     "prettier": "prettier --watch src/**/*.ts",
-    "test": "export NODE_ENV && tsc && db-migrate up --env test && tsc && jasmine && db-migrate reset",
+    "test": "tsc && jasmine",
     "test:windows": "export NODE_ENV && tsc && db-migrate up --env test && tsc && jasmine && db-migrate reset",
     "migration:up": "db-migrate up"
   },

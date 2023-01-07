@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Order from "../types/order.type";
+import { Order } from "../types/order.type";
 import OrderModel from "../models/order.model";
 
 const orderModel = new OrderModel();
@@ -48,28 +48,58 @@ export const show = async (req: Request, res: Response) => {
   }
 };
 
-export const completed = async (req: Request, res: Response) => {
+export const addProductToOrder = async (req: Request, res: Response) => {
   try {
-    const id = parseInt(req.params.id);
-    const order = await orderModel.completed(id);
+    // execute the product;
+    const addProductToOrderr = await orderModel.addProductToOrder(
+      req.body.orderId,
+      req.body.productId,
+      req.body.quantity
+    );
     res.json({
       status: "200 OK ✅",
-      data: order,
+      data: addProductToOrderr,
     });
   } catch (error) {
     throw error;
   }
 };
 
-export const active = async (req: Request, res: Response) => {
+export const getProductsOnOrder = async (req: Request, res: Response) => {
   try {
-    const id = parseInt(req.params.id);
-    const order = await orderModel.active(id);
+    const orderId = parseInt(req.params.id);
+    const result = orderModel.getProductsOnOrder(orderId);
     res.json({
       status: "200 OK ✅",
-      data: order,
+      data: result,
     });
   } catch (error) {
     throw error;
   }
 };
+
+// export const completed = async (req: Request, res: Response) => {
+//   try {
+//     const id = parseInt(req.params.id);
+//     const order = await orderModel.completed(id);
+//     res.json({
+//       status: "200 OK ✅",
+//       data: order,
+//     });
+//   } catch (error) {
+//     throw error;
+//   }
+// };
+
+// export const active = async (req: Request, res: Response) => {
+//   try {
+//     const id = parseInt(req.params.id);
+//     const order = await orderModel.active(id);
+//     res.json({
+//       status: "200 OK ✅",
+//       data: order,
+//     });
+//   } catch (error) {
+//     throw error;
+//   }
+// };

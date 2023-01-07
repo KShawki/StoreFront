@@ -19,9 +19,15 @@ CREATE TABLE products (
 
 CREATE TABLE orders (
   id            SERIAL PRIMARY KEY,
-  user_id       INTEGER NOT NULL REFERENCES users(id),
-  product_id    INTEGER NOT NULL REFERENCES products(id),
-  status        BOOLEAN NOT NULL
+  user_id       INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  status        VARCHAR(50) NOT NULL CHECK ("status" IN('active', 'complete')) DEFAULT 'active' 
+);
+
+CREATE TABLE orders_products(
+  id            SERIAL PRIMARY KEY,
+  quantity      INTEGER NOT NULL,
+  order_id      INTEGER NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+  product_id    INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE
 );
 
 
