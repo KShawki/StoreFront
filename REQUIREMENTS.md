@@ -19,6 +19,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - ✅ Create [token required]
 
 #### Orders
+
 - ✅ Current Order by user (args: user id)[token required]
 
 ## Data Shapes
@@ -44,3 +45,5 @@ These are the notes from a meeting with the frontend developer that describe wha
 - quantity of each product in the order ✅
 - user_id ✅
 - status of order (active or complete) ✅
+
+### Note: All End Points is Defined in README.md

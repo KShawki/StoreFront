@@ -5,6 +5,14 @@ import Product from "../types/product.type";
 // ORDER:
 // - Current Order by user (args: user id)[token required]
 
+// create custom type to retrive orderPorduct from db
+type customOrder = {
+  id?: number;
+  quantity: number;
+  order_id: number;
+  product_id: number;
+};
+
 class OrderModel {
   // [POST] : Create an Order
   async create(order: Order): Promise<Order> {
@@ -72,13 +80,13 @@ class OrderModel {
 
       // write the sql statement to execute
       const sql =
-        "SELECT * FROM orders_products JOIN products ON orders_products.product_id = products.id WHERE order_id=($1)";
+        "SELECT products.* FROM orders_products JOIN products ON orders_products.product_id = products.id WHERE order_id=($1)";
 
       // execute previous sql statement
       const result = await connection.query(sql, [orderId]);
 
       // close connection with db
-      connection.release();
+      // connection.release();
 
       // return results
       return result.rows;

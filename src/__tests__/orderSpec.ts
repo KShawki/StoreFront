@@ -5,6 +5,8 @@ import OrderModel from "../models/order.model";
 
 const orderModel = new OrderModel();
 
+const sql = "";
+
 describe("orderModel TestSuite .", () => {
   describe("Test Methods Exsist", () => {
     it("Should be an create method", () => {
@@ -19,12 +21,12 @@ describe("orderModel TestSuite .", () => {
       expect(orderModel.index).toBeDefined();
     });
 
-    // it("Should be an completed method .", () => {
-    //   expect(orderModel.completed).toBeDefined();
-    // });
+    it("should be a add product to order Method .", () => {
+      expect(orderModel.addProductToOrder).toBeDefined();
+    });
 
-    // it("Should be an completed method .", () => {
-    //   expect(orderModel.active).toBeDefined();
-    // });
+    it("should be a get product in order Method .", () => {
+      expect(orderModel.getProductsOnOrder).toBeDefined();
+    });
   });
 });

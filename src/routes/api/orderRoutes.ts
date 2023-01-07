@@ -8,7 +8,7 @@ router.get("/index", controller.index);
 router.get("/show/:id", controller.show);
 
 router.post("/addProduct", controller.addProductToOrder);
-router.get("/getProduct:id", controller.getProductsOnOrder);
+router.get("/getProduct/:id", controller.getProductsOnOrder);
 
 // router.get("/completed/:id", controller.completed);
 // router.get("/active/:id", controller.active);

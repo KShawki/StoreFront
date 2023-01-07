@@ -68,7 +68,7 @@ export const addProductToOrder = async (req: Request, res: Response) => {
 export const getProductsOnOrder = async (req: Request, res: Response) => {
   try {
     const orderId = parseInt(req.params.id);
-    const result = orderModel.getProductsOnOrder(orderId);
+    const result = await orderModel.getProductsOnOrder(orderId);
     res.json({
       status: "200 OK ✅",
       data: result,
