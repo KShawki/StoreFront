@@ -22,8 +22,8 @@ $ npm install
 $ npx db-migrate up
 $ npm run dev
 ```
-<small><b>Note:</b> I'll add a postman collection to test api!</small>
 
+<small><b>Note:</b> I'll add a postman collection to test api!</small>
 
 <hr />
 
@@ -68,7 +68,7 @@ NODE_ENV=dev
 
 # DB Configration
 POSTGRES_HOST = localhost
-POSTGRES_PORT = 5432
+POSTGRES_PORT = 5433
 POSTGRES_DB = store
 POSTGRES_DB_TEST = store_test
 POSTGRES_USER = postgres
@@ -81,3 +81,4 @@ SALT_ROUNDS = 10
 # JSON Web Token (JWT)
 TOKEN = YourPasswordHere
 ```
+<small>Note: The port information of DB server = POSTGRES_PORT 👀</small>
