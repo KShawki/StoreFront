@@ -81,4 +81,5 @@ SALT_ROUNDS = 10
 # JSON Web Token (JWT)
 TOKEN = YourPasswordHere
 ```
+
 <small>Note: The port information of DB server = POSTGRES_PORT 👀</small>

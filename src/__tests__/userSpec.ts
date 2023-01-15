@@ -24,40 +24,42 @@ describe("UserModel TestSuite .", () => {
     });
   });
 
-  // describe("test Auth logix", () => {
-  //   const user = {
-  //     email: "tset@khalid.com",
-  //     username: "test",
-  //     first_name: "Test",
-  //     last_name: "User",
-  //     password: "test1234",
-  //   } as unknown as User;
+  // -----------------------------------------------------
+  // TEST USER CREATION
+  // -----------------------------------------------------
 
-  //   beforeAll(async () => {
-  //     const createdUser = await userModel.create(user);
-  //     user.id = createdUser.id;
-  //   });
+  describe("test Auth logic", () => {
+    const user = {
+      email: "test@gmail.com",
+      username: "test",
+      firstname: "Khaled",
+      lastname: "Shawki",
+      password: "test",
+    } as unknown as User;
 
-  //   // delete all data from db after test
-  //   afterAll(async () => {
-  //     const connection = await db.connect();
-  //     const sql = `DELETE FROM users;`;
-  //     await connection.query(sql);
-  //     connection.release();
-  //   });
+    beforeAll(async () => {
+      const createdUser = await userModel.create(user);
+      user.id = createdUser.id;
+    });
 
-  //   it("auth method must return the auth user", async () => {
-  //     const auth = await userModel.auth(user.email, user.password as string);
-  //     expect(auth?.email).toBe(user.email);
-  //     expect(auth?.username).toBe(user.username);
-  //     expect(auth?.firstname).toBe(user.firstname);
-  //     expect(auth?.lastname).toBe(user.lastname);
-  //     expect(auth?.password).toBe(user.password);
-  //   });
+    // delete all data from db after test
+    afterAll(async () => {
+      // const connection = await db.connect();
+      // const sql = `DELETE FROM users;`;
+      // await connection.query(sql);
+      // connection.release();
+      console.log(`==> afterAll in async test Auth logic was called`);
+    });
 
-  //   it("auth method must return undefined for wrong", async () => {
-  //     const auth = await userModel.auth(`error@gmail.com`, "fake");
-  //     expect(auth).toBe(undefined);
-  //   });
-  // });
+    it("auth method must return the auth user", async () => {
+      const auth = await userModel.auth(user.email, user.password as string);
+      expect(auth?.email).toBe(user.email);
+      expect(auth?.username).toBe(user.username);
+    });
+
+    it("auth method must return undefined for wrong", async () => {
+      const auth = await userModel.auth(`error@gmail.com`, "fake");
+      expect(auth).toBe(undefined);
+    });
+  });
 });
