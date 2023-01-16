@@ -30,7 +30,7 @@ describe("UserModel TestSuite .", () => {
 
   describe("test Auth logic", () => {
     const user = {
-      email: "test@gmail.com",
+      email: "auth_test@gmail.com",
       username: "test",
       firstname: "Khaled",
       lastname: "Shawki",
@@ -42,17 +42,9 @@ describe("UserModel TestSuite .", () => {
       user.id = createdUser.id;
     });
 
-    // delete all data from db after test
-    afterAll(async () => {
-      // const connection = await db.connect();
-      // const sql = `DELETE FROM users;`;
-      // await connection.query(sql);
-      // connection.release();
-      console.log(`==> afterAll in async test Auth logic was called`);
-    });
-
     it("auth method must return the auth user", async () => {
       const auth = await userModel.auth(user.email, user.password as string);
+      console.log(auth);
       expect(auth?.email).toBe(user.email);
       expect(auth?.username).toBe(user.username);
     });
@@ -60,6 +52,14 @@ describe("UserModel TestSuite .", () => {
     it("auth method must return undefined for wrong", async () => {
       const auth = await userModel.auth(`error@gmail.com`, "fake");
       expect(auth).toBe(undefined);
+    });
+
+    // delete all data from db after test
+    afterAll(async () => {
+      const connection = await db.connect();
+      const sql = `DELETE FROM users where email = '${user.email}';`;
+      const result = await connection.query(sql);
+      connection.release();
     });
   });
 });

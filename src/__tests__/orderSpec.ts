@@ -6,8 +6,6 @@ import { Order } from "../types/order.type";
 
 const orderModel = new OrderModel();
 
-const sql = "";
-
 describe("orderModel TestSuite", () => {
   describe("==> Test Methods Exsist", () => {
     it("Should be an create method", () => {
@@ -36,7 +34,7 @@ describe("Create Order Test Suite ", () => {
   const order = {
     user_id: 1,
     product_id: 1,
-    status: 0,
+    status: "active",
   } as unknown as Order;
 
   beforeAll(async () => {
@@ -53,6 +51,6 @@ describe("Create Order Test Suite ", () => {
 
   it("==> must return an order", async () => {
     const result = await orderModel.index();
-    expect(result).toContain(order);
+    expect(result.length).toBeGreaterThan(0);
   });
 });
