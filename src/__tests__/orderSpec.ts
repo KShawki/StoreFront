@@ -61,4 +61,9 @@ describe("Create Order Test Suite ", () => {
     const result = await orderModel.index();
     expect(result.length).toBeGreaterThan(0);
   });
+
+  it("==> must return an product", async () => {
+    const result = await productModel.index();
+    expect(result.length).toBeGreaterThan(0);
+  });
 });
