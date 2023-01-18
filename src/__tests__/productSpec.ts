@@ -29,15 +29,20 @@ describe("Create Product Test Suite ", () => {
     category: "Laptop",
   } as unknown as Product;
 
+
   beforeAll(async () => {
-    const createdOrder = await productModel.create(product);
+    const connection = await db.connect();
+    const sql = `DELETE FROM products;`;
+    await connection.query(sql);
+    connection.release();
+    const createdProduct = await productModel.create(product);
   });
 
   afterAll(async () => {
-    const connection = await db.connect();
-    const sql = `DELETE FROM products where name = '${product.name}';`;
-    await connection.query(sql);
-    connection.release();
+    // const connection = await db.connect();
+    // const sql = `DELETE FROM products where name = '${product.name}';`;
+    // await connection.query(sql);
+    // connection.release();
   });
 
   it("==> must return an product", async () => {
@@ -45,4 +50,9 @@ describe("Create Product Test Suite ", () => {
     expect(result.length).toBeGreaterThan(0);
   });
 
+  it("==> must return an products", async () => {
+    const result = await productModel.show(1);
+    console.log(result);
+    expect(result).toEqual(result);
+  });
 });

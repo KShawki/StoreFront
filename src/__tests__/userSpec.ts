@@ -54,6 +54,18 @@ describe("UserModel TestSuite .", () => {
       expect(auth).toBe(undefined);
     });
 
+    // USERS SHOW
+    it("==> user show should return an user", async () => {
+      const result = await userModel.show("1");
+      expect(result).toEqual(result);
+    });
+
+    // USERS INDEX
+    it("==> user index should return an users", async () => {
+      const result = await userModel.index();
+      expect(result.length).toBeGreaterThan(0);
+    });
+
     // delete all data from db after test
     afterAll(async () => {
       const connection = await db.connect();
